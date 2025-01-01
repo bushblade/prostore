@@ -24,6 +24,7 @@ export const config = {
         password: { type: 'password' },
       },
       async authorize(credentials) {
+        console.log('Authorizing...', credentials);
         if (credentials == null) return null;
 
         // Find user in database
@@ -32,6 +33,7 @@ export const config = {
             email: credentials.email as string,
           },
         });
+        console.log('Found a user: ', user);
 
         // Check if user exists and if the password matches
         if (user && user.password) {
@@ -39,6 +41,7 @@ export const config = {
             credentials.password as string,
             user.password
           );
+          console.log('Passwords match: ', isMatch);
 
           // If password is correct, return user
           if (isMatch) {
