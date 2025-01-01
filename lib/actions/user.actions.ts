@@ -33,7 +33,7 @@ export async function signInWithCredentials(
 
     return { success: true, message: 'Signed in successfully' };
   } catch (error) {
-    console.log('this is the error we are looking for: ', error);
+    console.log('this is the error we are looking for: ', error.cause);
     if (isRedirectError(error)) {
       throw error;
     }
